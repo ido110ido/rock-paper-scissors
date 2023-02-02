@@ -65,7 +65,6 @@ h4{
     width: 320px;
 }
 .triangle{
-    z-index: -1;
     position: absolute;
 }
 .circle{
@@ -243,7 +242,6 @@ h4{
     color: aliceblue;
 }
 .emptyAvatar{
-    margin-top: 20px;
     height: 150px;
     width: 150px;
     background: #191E3E;
@@ -336,7 +334,6 @@ h4{
     color: #191E3E;
     border-radius: 6px;
     cursor: pointer;
-}
 }
 #youWin>button:hover{
     background-color: #e4e4e4;

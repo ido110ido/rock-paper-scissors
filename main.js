@@ -88,11 +88,6 @@ var animatedResult = function (userSelect) {
     var imegeAvatar = document.createElement("img");
     imegeAvatar.src = "./images/icon-".concat(userSelect.name, ".svg");
     uPicked === null || uPicked === void 0 ? void 0 : uPicked.appendChild(imegeAvatar);
-    //prototyp
-    // let pulse: HTMLDivElement = document.createElement("div");
-    // pulse.classList.add("pulsingCircle");
-    // uPicked?.appendChild(pulse);
-    //-------------------------
     console.log(cheackWinner(userSelect, computerPicker()));
     computerPick === null || computerPick === void 0 ? void 0 : computerPick.className = "emptyAvatar";
     var computer = computerPicker();

@@ -104,11 +104,6 @@ const animatedResult = (userSelect: ITypeOfGamePiece) => {
   let imegeAvatar: HTMLImageElement = document.createElement("img");
   imegeAvatar.src = `./images/icon-${userSelect.name}.svg`;
   uPicked?.appendChild(imegeAvatar);
-  //prototyp
-  // let pulse: HTMLDivElement = document.createElement("div");
-  // pulse.classList.add("pulsingCircle");
-  // uPicked?.appendChild(pulse);
-  //-------------------------
   console.log(cheackWinner(userSelect, computerPicker()));
   computerPick?.className = "emptyAvatar";
   const computer: GamePiece = computerPicker();
