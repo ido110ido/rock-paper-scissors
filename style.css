@@ -1,0 +1,240 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(at top,#2e324b,#282c49,#191E3E);    
+    width: 100%;
+    background-attachment: fixed ;
+    height: 100vh;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-bottom: 0px;
+    margin-top: 35px;
+    width: 50vw;
+    border: 2px solid hsl(217, 16%, 45%);
+    border-radius: 10px;
+    padding: 10px;
+    justify-content: space-between;
+}
+header>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 5px 40px;
+}
+h4{
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 600;
+    color: hsl(229, 64%, 46%);
+}
+#scoreCounter{
+    font-size: 50px;
+    color: hsl(229, 25%, 31%);
+    font-weight: 600;
+    height: fit-content;
+    transition: 1s;
+}
+.gameCenter{
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+    color: #c7c7c7;
+}
+#pickAType{
+    /* display: none; */
+    display: flex;
+    position: relative;
+    height: fit-content;
+}
+.triangle{
+    z-index: -1;
+}
+.circle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: white;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: inset 0em 0.3em rgba(0, 0, 0, 0.2);
+
+}
+.circle:hover{
+    scale: 1.05;
+    background-color: rgb(218, 218, 218);
+}
+.paper{
+    border: 15px solid #5571f6;
+    position: absolute;
+    top: -50px;
+    left: -50px;
+}
+.scissors{
+    border: 15px solid #eda723;
+    position: absolute;
+    top: -50px;
+    right: -50px;
+}
+.rock{
+    border: 15px solid #db3d5a;
+    position: absolute;
+    bottom: -50px;
+    right: calc(50% - 50px); 
+}
+#rules{
+    cursor: pointer;
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 5px 25px;
+    background: transparent;
+    border-radius: 5px;
+    border: 1px solid #d0d0d0;
+    color: #c7c7c7;
+    transition: 0.5s;
+}
+#rules:hover{
+    scale: 1.02;
+    color: #f9f9f9;
+}
+#popUpRulesShadow{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,.5);
+}
+#popUpRules{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    background-color: white;
+    border-radius: 15px;
+    gap: 20px;
+}
+.haedlinePopUp{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.titleRules{
+    font-weight: 600;
+    font-size: 25px;
+    color: #29315f;
+}
+#close{
+    font-size: 20px;
+    color:#d0d0d0;
+    transition: 0.5s;
+}
+#close:hover{
+    cursor: pointer;
+    color:#707070;
+    scale: 1.1;
+}
+#resultAnimated{
+    display: none;
+    /* display: flex; */
+    flex-direction: row;
+    align-items: center;
+    gap: 6vw;
+    justify-content: space-between;
+}
+.pickedDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 270px;
+    width: 30vh;
+    justify-content: space-between;
+}
+.pickedDiv>h3{
+    font-size: 30px;
+    white-space: nowrap;
+    color: aliceblue;
+}
+.emptyAvatar{
+    margin-top: 20px;
+    height: 150px;
+    width: 150px;
+    background: #191E3E;
+    border-radius: 50%;
+}
+#youWin{
+    /* display: flex; */
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    transform: translate(0, 15%);
+    animation: expand 3s cubic-bezier(0, 0.23, 0, 1.01) forwards;
+  }
+  
+  @keyframes expand {
+    0% {
+      width: 0px;
+      height: 0px;
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+    }
+  }
+#youWin>p{
+    font-size: 62px;
+    white-space: nowrap;
+    font-weight: 500;
+    color: #f9f9f9;
+}
+#youWin>button{
+    width: 100%;
+    height: 3.5em;
+    font-size: 21px;
+    font-weight: 500;
+    color: #191E3E;
+    border-radius: 6px;
+    cursor: pointer;
+    animation: expandB 2s cubic-bezier(0, 0.23, 0, 1.01) forwards;
+}
+
+@keyframes expandB {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  100% {
+    width: 30vw;
+    height: 3.5em;
+  }
+}
+#youWin>button:hover{
+    background-color: #e4e4e4;
+}
+.avatar{
+    position: static;
+    scale: 1.3;
+}
+.avatar:hover{
+    scale: 1.3;
+}
