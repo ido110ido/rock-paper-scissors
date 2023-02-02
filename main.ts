@@ -10,6 +10,12 @@ const spock = document.getElementById("spock") as HTMLElement | null;
 //*************************************************************************** *
 const youWin = document.getElementById("youWin") as HTMLElement | null;
 const playAgain = document.getElementById("playAgain") as HTMLElement | null;
+// pulsing winer alert ***************************
+const computerPulser = document.getElementById(
+  "computer"
+) as HTMLElement | null;
+const youPulser = document.getElementById("you") as HTMLElement | null;
+//************************************************** */
 const scoreCounter = document.getElementById(
   "scoreCounter"
 ) as HTMLElement | null;
@@ -94,15 +100,15 @@ playAgain?.addEventListener("click", () => {
 const animatedResult = (userSelect: ITypeOfGamePiece) => {
   pickAType?.style.display = "none";
   resultAnimated?.style.display = "flex";
-  let title: HTMLElement = document.createElement("h3");
-  title.innerText = "You Picked";
-  let selectedAvatar: HTMLDivElement = document.createElement("div");
-  selectedAvatar.className = `circleResult ${userSelect.name} avatar`;
+  uPicked?.className = `circleResult ${userSelect.name} avatar`;
   let imegeAvatar: HTMLImageElement = document.createElement("img");
   imegeAvatar.src = `./images/icon-${userSelect.name}.svg`;
-  selectedAvatar.appendChild(imegeAvatar);
-  uPicked?.appendChild(title);
-  uPicked?.appendChild(selectedAvatar);
+  uPicked?.appendChild(imegeAvatar);
+  //prototyp
+  // let pulse: HTMLDivElement = document.createElement("div");
+  // pulse.classList.add("pulsingCircle");
+  // uPicked?.appendChild(pulse);
+  //-------------------------
   console.log(cheackWinner(userSelect, computerPicker()));
   computerPick?.className = "emptyAvatar";
   const computer: GamePiece = computerPicker();
@@ -113,7 +119,7 @@ const animatedResult = (userSelect: ITypeOfGamePiece) => {
     computerPick?.appendChild(imegeComputer);
     setTimeout(() => {
       if (window.outerWidth > 600) {
-        resultAnimated?.style.gap = "20vw";
+        resultAnimated?.style.gap = "0";
       }
       youWin?.style.display = "flex";
       presentResult?.innerText = textResult(userSelect, computer);
@@ -141,7 +147,7 @@ const cheackWinner = (
   );
   return result;
 };
-//write how win to the screen and updat result counter
+//write how win to the screen and updat result counter and activat pulser
 const textResult = (
   userSelect: ITypeOfGamePiece,
   computer: GamePiece
@@ -150,6 +156,7 @@ const textResult = (
     return " IT'S A TIE";
   }
   if (cheackWinner(userSelect, computer)) {
+    pulserGeneretor(youPulser);
     scorePoint++;
     scoreCounter?.innerText = scorePoint;
     localStorage.setItem("score", JSON.stringify(scorePoint));
@@ -160,5 +167,16 @@ const textResult = (
     scoreCounter?.innerText = scorePoint;
     localStorage.setItem("score", JSON.stringify(scorePoint));
   }
+  pulserGeneretor(computerPulser);
   return "HOUSE WIN";
+};
+
+const pulserGeneretor = (pulse?: HTMLElement) => {
+  pulse?.innerHTML = `
+  <div class="pulsingCircle"></div>
+  <div class="pulsingCircle"></div>
+  <div class="pulsingCircle"></div>
+  <div class="pulsingCircle"></div>
+  <div class="pulsingCircle"></div>
+  `;
 };

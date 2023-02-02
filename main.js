@@ -10,6 +10,10 @@ var spock = document.getElementById("spock");
 //*************************************************************************** *
 var youWin = document.getElementById("youWin");
 var playAgain = document.getElementById("playAgain");
+// pulsing winer alert ***************************
+var computerPulser = document.getElementById("computer");
+var youPulser = document.getElementById("you");
+//************************************************** */
 var scoreCounter = document.getElementById("scoreCounter");
 var scorePoint = JSON.parse(localStorage.getItem("score")) || 0;
 scoreCounter === null || scoreCounter === void 0 ? void 0 : scoreCounter.innerText = scorePoint;
@@ -80,15 +84,15 @@ playAgain === null || playAgain === void 0 ? void 0 : playAgain.addEventListener
 var animatedResult = function (userSelect) {
     pickAType === null || pickAType === void 0 ? void 0 : pickAType.style.display = "none";
     resultAnimated === null || resultAnimated === void 0 ? void 0 : resultAnimated.style.display = "flex";
-    var title = document.createElement("h3");
-    title.innerText = "You Picked";
-    var selectedAvatar = document.createElement("div");
-    selectedAvatar.className = "circleResult ".concat(userSelect.name, " avatar");
+    uPicked === null || uPicked === void 0 ? void 0 : uPicked.className = "circleResult ".concat(userSelect.name, " avatar");
     var imegeAvatar = document.createElement("img");
     imegeAvatar.src = "./images/icon-".concat(userSelect.name, ".svg");
-    selectedAvatar.appendChild(imegeAvatar);
-    uPicked === null || uPicked === void 0 ? void 0 : uPicked.appendChild(title);
-    uPicked === null || uPicked === void 0 ? void 0 : uPicked.appendChild(selectedAvatar);
+    uPicked === null || uPicked === void 0 ? void 0 : uPicked.appendChild(imegeAvatar);
+    //prototyp
+    // let pulse: HTMLDivElement = document.createElement("div");
+    // pulse.classList.add("pulsingCircle");
+    // uPicked?.appendChild(pulse);
+    //-------------------------
     console.log(cheackWinner(userSelect, computerPicker()));
     computerPick === null || computerPick === void 0 ? void 0 : computerPick.className = "emptyAvatar";
     var computer = computerPicker();
@@ -99,7 +103,7 @@ var animatedResult = function (userSelect) {
         computerPick === null || computerPick === void 0 ? void 0 : computerPick.appendChild(imegeComputer);
         setTimeout(function () {
             if (window.outerWidth > 600) {
-                resultAnimated === null || resultAnimated === void 0 ? void 0 : resultAnimated.style.gap = "20vw";
+                resultAnimated === null || resultAnimated === void 0 ? void 0 : resultAnimated.style.gap = "0";
             }
             youWin === null || youWin === void 0 ? void 0 : youWin.style.display = "flex";
             presentResult === null || presentResult === void 0 ? void 0 : presentResult.innerText = textResult(userSelect, computer);
@@ -118,12 +122,13 @@ var cheackWinner = function (userSelect, computerSelect) {
     var result = userSelect.canWin.reduce(function (result, crr) { return (crr === computerSelect ? true : result); }, false);
     return result;
 };
-//write how win to the screen and updat result counter
+//write how win to the screen and updat result counter and activat pulser
 var textResult = function (userSelect, computer) {
     if (computer === userSelect.name) {
         return " IT'S A TIE";
     }
     if (cheackWinner(userSelect, computer)) {
+        pulserGeneretor(youPulser);
         scorePoint++;
         scoreCounter === null || scoreCounter === void 0 ? void 0 : scoreCounter.innerText = scorePoint;
         localStorage.setItem("score", JSON.stringify(scorePoint));
@@ -134,5 +139,9 @@ var textResult = function (userSelect, computer) {
         scoreCounter === null || scoreCounter === void 0 ? void 0 : scoreCounter.innerText = scorePoint;
         localStorage.setItem("score", JSON.stringify(scorePoint));
     }
+    pulserGeneretor(computerPulser);
     return "HOUSE WIN";
+};
+var pulserGeneretor = function (pulse) {
+    pulse === null || pulse === void 0 ? void 0 : pulse.innerHTML = "\n  <div class=\"pulsingCircle\"></div>\n  <div class=\"pulsingCircle\"></div>\n  <div class=\"pulsingCircle\"></div>\n  <div class=\"pulsingCircle\"></div>\n  <div class=\"pulsingCircle\"></div>\n  ";
 };
