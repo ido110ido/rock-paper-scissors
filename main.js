@@ -97,7 +97,7 @@ var animatedResult = function (userSelect) {
         computerPick === null || computerPick === void 0 ? void 0 : computerPick.className = "circleResult ".concat(computer, " avatar");
         computerPick === null || computerPick === void 0 ? void 0 : computerPick.appendChild(imegeComputer);
         setTimeout(function () {
-            if (window.outerWidth > 600) {
+            if (window.outerWidth < 600) {
                 resultAnimated === null || resultAnimated === void 0 ? void 0 : resultAnimated.style.gap = "0";
             }
             youWin === null || youWin === void 0 ? void 0 : youWin.style.display = "flex";

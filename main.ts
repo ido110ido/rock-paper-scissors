@@ -113,7 +113,7 @@ const animatedResult = (userSelect: ITypeOfGamePiece) => {
     computerPick?.className = `circleResult ${computer} avatar`;
     computerPick?.appendChild(imegeComputer);
     setTimeout(() => {
-      if (window.outerWidth > 600) {
+      if (window.outerWidth < 600) {
         resultAnimated?.style.gap = "0";
       }
       youWin?.style.display = "flex";
